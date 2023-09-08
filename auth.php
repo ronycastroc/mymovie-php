@@ -16,7 +16,7 @@
             <label for="password" class="form-label">Password:</label>
             <input type="password" class="form-control" id="password" name="password" placeholder="Type your password">
           </div>
-          <input type="submit" class="btn card-btn" value="Log In">
+          <input type="submit" class="btn" id="card-btn" value="Log In">
         </form>
       </div>
       <div class="col-md-4" id="register-container">
@@ -43,7 +43,7 @@
             <label for="confirmpassword" class="form-label">Confirm password:</label>
             <input type="password" class="form-control" id="confirmpassword" name="confirmpassword" placeholder="Confirm your password">
           </div>
-          <input type="submit" class="btn card-btn" value="Sign Up">
+          <input type="submit" class="btn" id="card-btn" value="Sign Up">
         </form>
       </div>
     </div>
