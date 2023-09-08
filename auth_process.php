@@ -11,7 +11,7 @@
 
   $type = filter_input(INPUT_POST, "type");
 
-  if($type === "register") {
+  if($type === "signup") {
     $name = filter_input(INPUT_POST, "name");
     $lastname = filter_input(INPUT_POST, "lastname");
     $email = filter_input(INPUT_POST, "email");
@@ -33,6 +33,20 @@
       return;
     }
 
+    $user = new User();
+    
+    $userToken = $user->generateToken();
+    $finalPassword = $user->generatePassword($password);
+
+    $user->name = $name;
+    $user->lastname = $lastname;
+    $user->email = $email;
+    $user->password = $finalPassword;
+    $user->token = $userToken;
+
+    $auth = true;
+
+    $userDao->create($user, $auth);
 
 
   }

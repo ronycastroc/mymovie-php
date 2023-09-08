@@ -22,7 +22,7 @@
       <div class="col-md-4" id="register-container">
         <h2>Sign Up</h2>
         <form action="<?= $BASE_URL ?>/auth_process.php" method="POST">
-          <input type="hidden" name="type" value="register">
+          <input type="hidden" name="type" value="signup">
           <div class="mb-3">
             <label for="email" class="form-label">E-mail:</label>
             <input type="email" class="form-control" id="email" name="email" placeholder="Type your e-mail">

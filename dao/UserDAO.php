@@ -50,7 +50,6 @@
           
           return $user;
         }
-
       } 
       
       return false;      
