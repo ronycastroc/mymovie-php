@@ -34,7 +34,28 @@
     public function verifyToken($protected = false) {}
     public function setTokenToSession($token, $redirect = true) {}
     public function authenticateUser($email, $password) {}
-    public function findByEmail($email) {}
+
+    public function findByEmail($email) {
+
+      if($email != "") {
+        $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = :email");
+
+        $stmt->bindParam(":email", $email);
+
+        $stmt->execute();
+
+        if($stmt->rowCount() > 0) {
+          $data = $stmt->fetch();
+          $user = $this->buildUser($data);
+          
+          return $user;
+        }
+
+      } 
+      
+      return false;      
+    }
+
     public function findById($id) {}
     public function findByToken($token) {}
     public function destroyToken() {}

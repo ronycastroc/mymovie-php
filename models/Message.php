@@ -25,10 +25,20 @@
 
     public function getMessage() {
 
+      if(!empty($_SESSION["msg"])) {
+        return [
+          "msg" => $_SESSION["msg"],
+          "type" => $_SESSION["type"]
+        ];
+      } 
+      
+      return false;
+      
     }
 
     public function clearMessage() {
-      
+      $_SESSION["msg"] = "";
+      $_SESSION["type"] = "";
     }
 
   }

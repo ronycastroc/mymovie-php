@@ -2,10 +2,12 @@
   require_once("globals.php");
   require_once("db.php");
   require_once("models/User.php");
-  require_once("models/User.php");
+  require_once("models/Message.php");
   require_once("dao/UserDAO.php");
 
   $message = new Message($BASE_URL);
+
+  $userDao = new UserDAO($conn, $BASE_URL);
 
   $type = filter_input(INPUT_POST, "type");
 
@@ -25,6 +27,13 @@
       $message->setMessage("Passwords are not the same", "error", "back");
       return;
     }
+
+    if($userDao->findByEmail($email) !== false) {
+      $message->setMessage("User already registered, try another email.", "error", "back");
+      return;
+    }
+
+
 
   }
 
