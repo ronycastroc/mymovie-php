@@ -1,7 +1,9 @@
 <?php
 
-include_once("globals.php");
-include_once("db.php");
+  include_once("globals.php");
+  include_once("db.php");
+
+  $flassMessage = [];
 
 ?>
 <!DOCTYPE html>
@@ -44,3 +46,8 @@ include_once("db.php");
       </div>
     </nav>
   </header>
+  <?php if(!empty($flassMessage["msg"])): ?>
+    <div class="msg-container">
+      <p class="msg <?= $flassMessage["type"] ?>"><?= $flassMessage["msg"] ?></p>
+    </div>
+  <?php endif; ?>
