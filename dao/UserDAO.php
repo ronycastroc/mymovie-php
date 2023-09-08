@@ -55,7 +55,25 @@
     }
 
     public function update(User $user, $redirect = true) {}
-    public function verifyToken($protected = false) {}
+
+    public function verifyToken($protected = false) {
+
+      if(!empty($_SESSION["token"])) {      
+        $token = $_SESSION["token"];
+
+        $user = $this->findByToken($token);
+
+        if($user) {
+          return $user;
+        }       
+      }
+
+      if($protected) {          
+        $this->message->setMessage("Log in to access this page!", "error", "/index.php");
+        return;
+      }
+
+    }
 
     public function setTokenToSession($token, $redirect = true) {
       
@@ -86,12 +104,41 @@
         }
       } 
       
-      return false;      
+      return false;
+
     }
 
     public function findById($id) {}
-    public function findByToken($token) {}
-    public function destroyToken() {}
+
+    public function findByToken($token) {
+
+      if($token != "") {
+        $stmt = $this->conn->prepare("SELECT * FROM users WHERE token = :token");
+
+        $stmt->bindParam(":token", $token);
+
+        $stmt->execute();
+
+        if($stmt->rowCount() > 0) {
+          $data = $stmt->fetch();
+          $user = $this->buildUser($data);
+          
+          return $user;
+        }
+      } 
+      
+      return false;
+            
+    }
+    
+    public function destroyToken() {
+
+      $_SESSION["token"] = "";
+
+      $this->message->setMessage("You have successfully logged out!", "success", "/index.php");
+
+    }
+
     public function changePassword(User $user) {}
 
   }
