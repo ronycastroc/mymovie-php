@@ -51,6 +51,17 @@
 
   }
 
-  if($type === "login") {}
+  if($type === "login") {
+    $email = filter_input(INPUT_POST, "email");
+    $password = filter_input(INPUT_POST, "password");
+
+    if(!$userDao->authenticateUser($email, $password)) {
+      $message->setMessage("Incorrect username and/or password.", "error", "back");
+      return;
+    }
+
+    $message->setMessage("Welcome!", "success", "/editprofile.php");
+
+  }
 
 ?>
