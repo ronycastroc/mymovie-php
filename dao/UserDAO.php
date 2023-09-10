@@ -188,13 +188,23 @@
 
     }
 
-    public function changePassword(User $user) {}
+    public function changePassword(User $user) {
+
+      $stmt = $this->conn->prepare("UPDATE users SET
+        password = :password
+        WHERE id = :id
+      ");
+
+      $stmt->bindParam(":password", $user->password);
+      $stmt->bindParam(":id", $user->id);
+
+      $stmt->execute();
+      
+      $this->message->setMessage("Password changed successfully!", "success", "/editprofile.php");
+
+    }
 
   }
-
-/*   if(isset($_FILES["image"]) && !empty($_FILES["image"]["tmp_name"])) {
-    print_r($_FILES); exit;
-  } */
 
 ?>
 

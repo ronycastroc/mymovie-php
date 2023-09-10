@@ -56,6 +56,27 @@
 
   }
 
-  if($type === "changepassword") {}
+  if($type === "changepassword") {    
+    $password = filter_input(INPUT_POST, "password");
+    $confirmpassword = filter_input(INPUT_POST, "confirmpassword");
+
+    $userData = $userDao->verifyToken();
+    
+    $id = $userData->id;
+
+    if($password !== $confirmpassword) {
+      $message->setMessage("Passwords are not the same!", "error", "back");
+      return;
+    } 
+    
+    $user = new User();
+
+    $finalPassword = $user->generatePassword($password);
+
+    $user->password = $finalPassword;
+    $user->id = $id;
+
+    $userDao->changePassword($user);
+  }
 
 ?>
