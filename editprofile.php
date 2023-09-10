@@ -33,15 +33,15 @@
             </div>
             <div class="mb-3">
               <label for="email" class="form-label">E-mail:</label>
-              <input type="text" readonly class="form-control disabled" id="email" name="email" placeholder="Type your e-mail" value="<?= $userData->email ?>">
+              <input type="text" readonly class="form-control disabled" id="email" name="email" placeholder="Type your e-mail" value="<?= $userData->email ?>" disabled>
             </div>
             <div class="mb-3">
             <input type="submit" class="btn" id="card-btn" value="Update">
             </div>            
           </div>
           <div class="col-md-4">
-            <div id="profile-image-container" style="background-image: url('<?= $BASE_URL ?>img/users/<?= $userData->image ?>')"></div>
-            <div class="mb-3">
+            <div id="profile-image-container" style="background-image: url('<?= $BASE_URL ?>/img/users/<?= $userData->image ?>')"></div>
+            <div class="mb-3 row">
               <label for="image" class="form-label">Image:</label>
               <input type="file" class="form-control-file" name="image">
             </div>
