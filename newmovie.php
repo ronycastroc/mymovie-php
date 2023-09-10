@@ -40,7 +40,7 @@
         </div>
         <div class="mb-3">
           <label for="trailer" class="form-label">Trailer:</label>
-          <input type="text" class="form-control" id="trailer" name="trailer" placeholder="Enter trailer link">
+          <input type="url" class="form-control" id="trailer" name="trailer" placeholder="Enter trailer link">
         </div>
         <div class="mb-3">
           <label for="description" class="form-label">Description:</label>

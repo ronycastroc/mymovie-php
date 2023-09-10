@@ -44,13 +44,10 @@
       $target_file = $target_dir . $imageName;
 
       move_uploaded_file($image["tmp_name"], $target_file);
-
-      if(!move_uploaded_file($image["tmp_name"], $target_file)) {
-        $message->setMessage("An error occurred while uploading the file!", "error", "back");        
-      }
       
       $userData->image = $imageName;
-    }   
+      
+    }
 
     $userDao->update($userData);
 
