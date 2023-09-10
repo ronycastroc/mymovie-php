@@ -33,7 +33,7 @@
             </div>
             <div class="mb-3">
               <label for="email" class="form-label">E-mail:</label>
-              <input type="text" readonly class="form-control disabled" id="email" name="email" placeholder="Type your e-mail" value="<?= $userData->email ?>" disabled>
+              <input type="text" readonly class="form-control disabled" id="email" name="email" placeholder="Type your e-mail" value="<?= $userData->email ?>">
             </div>
             <div class="mb-3">
             <input type="submit" class="btn" id="card-btn" value="Update">
