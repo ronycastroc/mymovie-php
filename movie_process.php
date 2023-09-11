@@ -34,7 +34,7 @@
     $movie->trailer = $trailer;
     $movie->category = $category;
     $movie->length = $length;
-    $movie->users_id = $userData->id;
+    $movie->user_id = $userData->id;
 
      //  first enable folder permissions to save files: "chmod 777 ./img/movies/"
     if(isset($_FILES["image"]) && !empty($_FILES["image"]["tmp_name"])) {
