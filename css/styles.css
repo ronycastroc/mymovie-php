@@ -18,6 +18,7 @@
 
 #main-navbar {
   background-color: #121212;
+  padding: 5px 20px;
 }
 
 #search-form {
@@ -95,7 +96,7 @@
 
 .section-title {
   font-size: 24px;
-  border-left: 4px solid #F5C518;
+  border-left: 4px solid #B36AEA;
   padding-left: 12px;
   margin-top: 20px;
 }
@@ -140,7 +141,7 @@
 }
 
 .fas.fa-star {
-  color: #F5C518;
+  color: #B36AEA;
 }
 
 .rating {
@@ -176,7 +177,7 @@
 #login-container h2,
 #register-container h2 {
   text-align: center;
-  border-bottom: 2px solid #F5C518;
+  border-bottom: 2px solid #B36AEA;
   width: 200px;
   margin: 0 auto;
   padding: 10px;
@@ -190,15 +191,15 @@
 
 #card-btn {
   color: #000;
-  background-color: #F5C518;
-  border: 2px solid #F5C518;
+  background-color: #B36AEA;
+  border: 2px solid #B36AEA;
   width: 100%;
 }
 
 #card-btn:hover {
   background-color: transparent;
-  color: #F5C518;
-  border-color: #F5C518;
+  color: #B36AEA;
+  border-color: #B36AEA;
 }
 
 /* EDIT PROFILE */
@@ -206,7 +207,7 @@
 .profile-image-container {
   width: 150px;
   height: 150px;
-  border: 6px solid #F5C518;
+  border: 6px solid #B36AEA;
   border-radius: 100%;
   background-size: cover;
   background-position: center;
@@ -260,10 +261,96 @@
 .page-title:after {
   content: "";
   width: 300px;
-  border-bottom: 2px solid #F5C518;
+  border-bottom: 2px solid #B36AEA;
   display: block;
   margin: 0 auto;
   padding-top: 7px;
+}
+
+/* DASHBOARD */
+#add-movie-container {
+  text-align: right;
+}
+
+#movies-dashboard {
+  margin: 0 auto;
+}
+
+#movies-dashboard .table {
+  color: #FFF;
+}
+
+#movies-dashboard .table th {
+  border-top: none;
+}
+
+#movies-dashboard .table tr {
+  padding: 15px 0;
+  color: #FFF;
+}
+
+.table-movie-title {
+  color: #FFF;
+  font-weight: bold;
+  transition: .5s;
+  text-decoration: none;
+}
+
+.table-movie-title:hover {
+  color: #B36AEA;
+}
+
+.actions-column {
+  max-width: 75px;
+  text-align: center;
+}
+
+.actions-column form {
+  display: inline-block;
+}
+
+.edit-btn {
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin: 0 5px;
+  font-weight: bold;
+  transition: .5s;
+  border: none;
+  text-decoration: none;
+}
+
+.edit-btn {
+  background-color: #0DCAF0;
+  color: #FFF;
+}
+
+.edit-btn:hover {
+  background-color: transparent;
+  color: #0DCAF0;
+  text-decoration: none;
+}
+
+#delete-btn {
+  border-radius: 5px;
+  margin: 0 5px;
+  font-weight: bold;
+  transition: .5s;
+  border: none;
+  text-decoration: none;
+  background-color: #DC3545;
+  color: #FFF;
+  
+}
+
+#delete-btn:hover {
+  background-color: transparent;
+  color: #DC3545;
+  text-decoration: none;
+}
+
+table {
+  border-collapse: separate !important;
+  border-spacing: 1.5em !important;  
 }
 
 /* FOOTER */

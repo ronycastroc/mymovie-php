@@ -8,7 +8,7 @@
   <div class="card-body">
     <p class="card-rating">
       <i class="fas fa-star"></i>
-      <span class="rating">10</span>
+      <span class="rating">9</span>
     </p>
     <h5 class="card-title">
       <a href="<?= $BASE_URL ?>/movie.php?id=<?= $movie->id ?>"><?= $movie->title ?></a>
