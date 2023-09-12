@@ -312,6 +312,11 @@
 
 .author-name a {
   color: #B36AEA;
+  text-decoration: none;
+}
+
+.author-name a:hover {
+  text-decoration: underline;
 }
 
 .comment-title {
