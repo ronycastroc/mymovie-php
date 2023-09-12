@@ -40,6 +40,7 @@
           <p class="page-description">Change the movie data in the form below:</p>
           <form action="<?= $BASE_URL ?>/processes/movie_process.php" id="edit-movie-form" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="type" value="update">
+            <input type="hidden" name="id" value="<?= $movie->id ?>">
             <div class="mb-3">
               <label for="title" class="form-label">Title:</label>
               <input type="text" class="form-control" id="title" name="title" placeholder="Type the title of the movie" value="<?= $movie->title ?>">

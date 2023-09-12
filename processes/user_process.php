@@ -40,7 +40,7 @@
 
       $imageName = $user->imageGenerateName();
 
-      $target_dir = "/../img/users";
+      $target_dir = __DIR__ . "/../img/users/";
       $target_file = $target_dir . $imageName;
 
       move_uploaded_file($image["tmp_name"], $target_file);

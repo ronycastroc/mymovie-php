@@ -36,7 +36,7 @@
               <input type="text" readonly class="form-control disabled" id="email" name="email" placeholder="Type your e-mail" value="<?= $userData->email ?>">
             </div>
             <div class="mb-3">
-            <input type="submit" class="btn" id="card-btn" value="Update">
+            <input type="submit" class="btn" id="card-btn-sm" value="Update">
             </div>            
           </div>
           <div class="col-md-4">
@@ -66,7 +66,7 @@
               <label for="confirmpassword" class="form-label">Confirm password:</label>
               <input type="password" class="form-control" id="confirmpassword" name="confirmpassword" placeholder="Confirm your new passwword">
             </div>
-            <input type="submit" class="btn" id="card-btn" value="Update password">
+            <input type="submit" class="btn" id="card-btn-sm" value="Update password">
           </form>
         </div>
       </div>

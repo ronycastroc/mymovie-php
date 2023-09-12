@@ -46,7 +46,7 @@
           <label for="description" class="form-label">Description:</label>
           <textarea name="description" id="description" rows="5" class="form-control" placeholder="Describe the movie..."></textarea>
         </div>
-        <input type="submit" class="btn" id="card-btn" value="Add movie">
+        <input type="submit" class="btn" id="card-btn-sm" value="Add movie">
       </form>
     </div>
   </div>
