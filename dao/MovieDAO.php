@@ -1,6 +1,6 @@
 <?php 
-  require_once("models/Movie.php");
-  require_once("models/Message.php");
+  require_once(__DIR__ . "/../models/Movie.php");
+  require_once(__DIR__ . "/../models/Message.php");
 
   class MovieDAO implements MovieDAOInterface {
 
@@ -151,12 +151,23 @@
 
       $stmt->execute();
 
-      $this->message->setMessage("Movie added successfully!", "success", "/index.php");
+      $this->message->setMessage("Movie added successfully!", "success", "/../index.php");
 
     }
 
     public function update(Movie $movie) {}
-    public function destroy($id) {}
+
+    public function destroy($id) {
+
+      $stmt = $this->conn->prepare("DELETE FROM movies WHERE id = :id");
+
+      $stmt->bindParam(":id", $id);
+
+      $stmt->execute();
+
+      $this->message->setMessage("Movie removed successfully!", "success", "/../dashboard.php");
+
+    }
 
   }
 

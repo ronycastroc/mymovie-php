@@ -13,7 +13,7 @@
     <div class="offset-md-4 col-md-4 new-movie-container">
       <h1 class="page-title">Add Movie</h1>
       <p class="page-description">Add your review!</p>
-      <form action="<?= $BASE_URL ?>/movie_process.php" id="add-movie-form" method="POST" enctype="multipart/form-data">
+      <form action="<?= $BASE_URL ?>/processes/movie_process.php" id="add-movie-form" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="type" value="create">
         <div class="mb-3">
           <label for="title" class="form-label">Title:</label>

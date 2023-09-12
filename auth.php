@@ -6,7 +6,7 @@
     <div class="row" id="auth-row">
       <div class="col-md-4" id="login-container">
         <h2>Log In</h2>
-        <form action="<?= $BASE_URL ?>/auth_process.php" method="POST">
+        <form action="<?= $BASE_URL ?>/processes/auth_process.php" method="POST">
           <input type="hidden" name="type" value="login">
           <div class="mb-3">
             <label for="email" class="form-label">E-mail:</label>
@@ -21,7 +21,7 @@
       </div>
       <div class="col-md-4" id="register-container">
         <h2>Sign Up</h2>
-        <form action="<?= $BASE_URL ?>/auth_process.php" method="POST">
+        <form action="<?= $BASE_URL ?>/processes/auth_process.php" method="POST">
           <input type="hidden" name="type" value="signup">
           <div class="mb-3">
             <label for="email" class="form-label">E-mail:</label>

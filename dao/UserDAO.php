@@ -1,7 +1,6 @@
-<?php 
-
-  require_once("models/User.php");
-  require_once("models/Message.php");
+<?php
+  require_once(__DIR__ . "/../models/User.php");
+  require_once(__DIR__ . "/../models/Message.php");
 
   class UserDAO implements UserDaoInterface {
 
@@ -77,7 +76,7 @@
       $stmt->execute();
 
       if($redirect) {        
-        $this->message->setMessage("Data updated successfully!", "success", "/editprofile.php");
+        $this->message->setMessage("Data updated successfully!", "success", "/../editprofile.php");
       }
 
     }
@@ -106,7 +105,7 @@
       $_SESSION["token"] = $token;
 
       if($redirect) {
-        $this->message->setMessage("Welcome!", "success", "/editprofile.php");
+        $this->message->setMessage("Welcome!", "success", "/../editprofile.php");
       }
 
     }
@@ -200,7 +199,7 @@
 
       $stmt->execute();
       
-      $this->message->setMessage("Password changed successfully!", "success", "/editprofile.php");
+      $this->message->setMessage("Password changed successfully!", "success", "/../editprofile.php");
 
     }
 

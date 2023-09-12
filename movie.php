@@ -63,7 +63,7 @@
           <div class="col-md-12" id="review-form-container">
             <h4>Submit your review:</h4>
             <p class="page-description">Fill in the form with your rating and comment about the film</p>
-            <form action="<?= $BASE_URL ?>/review_process.php" id="review-form" method="POST">
+            <form action="<?= $BASE_URL ?>/processes/review_process.php" id="review-form" method="POST">
               <input type="hidden" name="type" value="create">
               <input type="hidden" name="movie_id" value="<?= $movie->id ?>">
               <div class="mb-3">

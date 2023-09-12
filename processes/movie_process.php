@@ -1,10 +1,10 @@
 <?php 
-  require_once("globals.php");
-  require_once("db.php");
-  require_once("models/Movie.php");
-  require_once("models/Message.php");
-  require_once("dao/UserDAO.php");
-  require_once("dao/MovieDAO.php");
+  require_once(__DIR__ . "/../globals.php");
+  require_once(__DIR__ . "/../db.php");
+  require_once(__DIR__ . "/../models/Movie.php");
+  require_once(__DIR__ . "/../models/Message.php");
+  require_once(__DIR__ . "/../dao/UserDAO.php");
+  require_once(__DIR__ . "/../dao/MovieDAO.php");
 
   $message = new Message($BASE_URL);
   $userDao = new UserDAO($conn, $BASE_URL);
@@ -50,7 +50,7 @@
       
       $imageName = $movie->imageGenerateName();
 
-      $target_dir = "./img/movies/";
+      $target_dir = "/../img/movies/";
       $target_file = $target_dir . $imageName;
 
       move_uploaded_file($image["tmp_name"], $target_file);
@@ -63,5 +63,25 @@
 
   }
 
+
+  if($type === "delete") {
+
+     $id = filter_input(INPUT_POST, "id");
+
+     $movie = $movieDao->findById($id);
+ 
+     if(!$movie) {
+      $message->setMessage("Invalid data!", "error", "/../index.php");
+      return;
+     }
+
+    if($movie->user_id !== $userData->id) {
+      $message->setMessage("Invalid data!", "error", "/../index.php");
+      return;
+    }
+ 
+    $movieDao->destroy($movie->id);
+
+  }
 
 ?>

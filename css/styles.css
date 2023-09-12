@@ -327,6 +327,10 @@
   padding-top: 7px;
 }
 
+#rating {
+  width: 100px !important;
+}
+
 /* DASHBOARD */
 #add-movie-container {
   text-align: right;
