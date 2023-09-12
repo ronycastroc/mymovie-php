@@ -29,7 +29,25 @@
 
     }
 
-    public function create(Review $review) {}
+    public function create(Review $review) {
+
+      $stmt = $this->conn->prepare("INSERT INTO reviews (
+        rating, review, movie_id, user_id
+      ) VALUES (
+        :rating, :review, :movie_id, :user_id
+      )");
+
+      $stmt->bindParam(":rating", $review->rating);
+      $stmt->bindParam(":review", $review->review);
+      $stmt->bindParam(":movie_id", $review->movie_id);
+      $stmt->bindParam(":user_id", $review->user_id);
+
+      $stmt->execute();
+
+      $this->message->setMessage("Review added successfully!", "success", "/../movie.php?id=$review->movie_id");
+
+    }
+
     public function getMoviesReview($id) {}
     public function hasAlreadyReviewed($id, $userId) {}
     public function getRatings($id) {}
