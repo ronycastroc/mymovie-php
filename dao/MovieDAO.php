@@ -2,6 +2,8 @@
   require_once(__DIR__ . "/../models/Movie.php");
   require_once(__DIR__ . "/../models/Message.php");
 
+  require_once("ReviewDAO.php");
+
   class MovieDAO implements MovieDAOInterface {
 
     private $conn;
@@ -27,11 +29,15 @@
       $movie->length = $data["length"];
       $movie->user_id = $data["user_id"];
 
+      $reviewDao = new ReviewDao($this->conn, $this->url);
+
+      $rating = $reviewDao->getRatings($movie->id);
+
+      $movie->rating = $rating;
+
       return $movie;
 
     }
-
-    public function findAll() {}
 
     public function getLatestMovies() {
 

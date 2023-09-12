@@ -7,8 +7,8 @@
   $id = filter_input(INPUT_GET, "id");
 
   $movie;
-
   $movieDao = new MovieDAO($conn, $BASE_URL);
+  $reviewDao = new ReviewDAO($conn, $BASE_URL);
 
   if (empty($id)) {
     $message->setMessage("The movie was not found!", "error", "/index.php");
@@ -34,9 +34,10 @@
       $userOwnsMovie = true;
     }
 
-    // reviews movie   
-
+    $alreadyReviewed = $reviewDao->hasAlreadyReviewed($id, $userData->id);
   }
+
+  $movieReviews = $reviewDao->getMoviesReview($movie->id);
 
 ?>
   <div id="main-container" class="container-fluid">
@@ -48,7 +49,7 @@
           <span class="pipe"></span>
           <span><?= $movie->category ?></span>
           <span class="pipe"></span>
-          <span><i class="fas fa-star"></i> 9</span>
+          <span><i class="fas fa-star"></i> <?= $movie->rating ?></span>
         </p>
         <iframe src="<?= $movie->trailer ?>" width="560" height="315" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encryted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <p><?= $movie->description ?></p>
@@ -58,8 +59,7 @@
       </div>
       <div class="offset-md-1 col-md-10" id="reviews-container">
         <h3 id="reviews-title">Rating:</h3>
-        <!-- Verifica se habilita a review para o usuário ou não -->
-        <!-- if(){} -->        
+        <?php if(!empty($userData) && !$userOwnsMovie && !$alreadyReviewed): ?>      
           <div class="col-md-12" id="review-form-container">
             <h4>Submit your review:</h4>
             <p class="page-description">Fill in the form with your rating and comment about the film</p>
@@ -89,42 +89,13 @@
               <input type="submit" class="btn" id="card-btn-sm" value="Send review">
             </form>
           </div>
-        <!-- endif; -->
-        <!-- review -->
-        <div class="col-md12 review">
-          <div class="row">
-            <div class="col-md-1">
-              <div class="profile-image-container review-image" style="background-image: url('<?= $BASE_URL ?>/img/users/user.png')"></div>
-            </div>
-            <div class="col-md-9 author-details-container">
-              <h4 class="author-name">
-                <a href="#">Rony Test</a>
-              </h4>
-              <p><i class="fas fa-star"></i>9</p>
-            </div>
-            <div class="col-md-12">
-              <p class="comment-title">Reviews</p>
-              <p>this is the user Review</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md12 review">
-          <div class="row">
-            <div class="col-md-1">
-              <div class="profile-image-container review-image" style="background-image: url('<?= $BASE_URL ?>/img/users/user.png')"></div>
-            </div>
-            <div class="col-md-9 author-details-container">
-              <h4 class="author-name">
-                <a href="#">Rony Test</a>
-              </h4>
-              <p><i class="fas fa-star"></i>9</p>
-            </div>
-            <div class="col-md-12">
-              <p class="comment-title">Reviews</p>
-              <p>this is the user Review</p>
-            </div>
-          </div>
-        </div>
+        <?php endif; ?>
+        <?php foreach($movieReviews as $review): ?>
+          <?php require("templates/user_review.php"); ?>
+        <?php endforeach; ?>
+        <?php if(count($movieReviews) === 0): ?>
+          <p class="empty-list">There are no reviews for this movie yet...</p>
+        <?php endif; ?>
       </div>
     </div>
   </div>     

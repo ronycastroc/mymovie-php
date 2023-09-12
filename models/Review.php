@@ -7,6 +7,7 @@
     public $review;
     public $user_id;
     public $movie_id;
+    public $user;
 
   }
 

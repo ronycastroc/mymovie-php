@@ -48,11 +48,86 @@
 
     }
 
-    public function getMoviesReview($id) {}
-    public function hasAlreadyReviewed($id, $userId) {}
-    public function getRatings($id) {}
+    public function getMoviesReview($id) {
+
+      $reviews = [];
+
+      $stmt = $this->conn->prepare("SELECT * FROM reviews WHERE movie_id = :movie_id");
+
+      $stmt->bindParam(":movie_id", $id);
+
+      $stmt->execute();
+
+      if($stmt->rowCount() > 0) {
+
+        $reviewsData = $stmt->fetchAll();
+
+        $userDao = new UserDao($this->conn, $this->url);
+
+        foreach($reviewsData as $review) {
+
+          $reviewObject = $this->buildReview($review);
+
+          $user = $userDao->findById($reviewObject->user_id);
+
+          $reviewObject->user = $user;
+
+          $reviews[] = $reviewObject;
+        }
+
+      }
+
+      return $reviews;
+
+    }
+
+
+    public function hasAlreadyReviewed($id, $userId) {
+
+      $stmt = $this->conn->prepare("SELECT * FROM reviews WHERE movie_id = :movie_id AND user_id = :user_id");
+
+      $stmt->bindParam(":movie_id", $id);
+      $stmt->bindParam(":user_id", $userId);
+
+      $stmt->execute();
+
+      if($stmt->rowCount() === 0) {
+        return false;
+      }
+      
+      return true;
+
+    }
+
+
+    public function getRatings($id) {
+
+      $stmt = $this->conn->prepare("SELECT * FROM reviews WHERE movie_id = :movie_id");
+
+      $stmt->bindParam(":movie_id", $id);
+
+      $stmt->execute();
+
+      if($stmt->rowCount() === 0) {
+        return $rating = "Not rated";        
+      }
+
+      $rating = 0;
+
+      $reviews = $stmt->fetchAll();
+
+      foreach($reviews as $review) {
+        $rating += $review["rating"];
+      }
+
+      $rating = $rating / count($reviews);
+
+      $rating = number_format($rating, 2);
+
+      return $rating;
+
+    }
 
   }
-
 
 ?>
