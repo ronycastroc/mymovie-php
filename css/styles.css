@@ -463,6 +463,17 @@ table {
   border-spacing: 1.5em !important;  
 }
 
+/* SEARCH */
+#search-title {
+  font-size: 30px;
+}
+
+#search-result,
+.back-link {
+  color: #B36AEA;
+  text-decoration: none;
+}
+
 /* FOOTER */
 #footer {
   background-color: #000;
