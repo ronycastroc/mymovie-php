@@ -189,17 +189,26 @@
   margin: 30px auto;
 }
 
-#card-btn {
+#card-btn,
+#card-btn-sm {
   color: #000;
   background-color: #B36AEA;
   border: 2px solid #B36AEA;
-  width: 100%;
 }
 
-#card-btn:hover {
+#card-btn:hover,
+#card-btn-sm:hover {
   background-color: transparent;
   color: #B36AEA;
   border-color: #B36AEA;
+}
+
+#card-btn {
+  width: 100%;
+}
+
+.card-btn-sm {
+  width: 30%;
 }
 
 /* EDIT PROFILE */
@@ -256,6 +265,57 @@
   min-width: 200px;
   background-position: center;
   background-size: cover;
+}
+
+/* MOVIE */
+.movie-container {
+  text-align: center;
+}
+
+.movie-details {
+  margin: 25px 0;
+}
+
+.pipe {
+  border: 1px solid #333;
+  margin: 0 10px;
+}
+
+#reviews-title {
+  margin-bottom: 25px;
+}
+
+#review-form-container {
+  background-color: #333;
+  padding: 20px;
+}
+
+#review-form-container select,
+#review-form-container textarea {
+  width: 50%;
+}
+
+#reviews-container {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 4px solid #B36AEA;
+}
+
+.review {
+  padding: 20px 0;
+  border-bottom: 1px solid #333;
+}
+
+.author-details-container {
+  padding-top: 20px;
+}
+
+.author-name a {
+  color: #B36AEA;
+}
+
+.comment-title {
+  color: #999;
 }
 
 .page-title:after {

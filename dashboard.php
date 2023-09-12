@@ -17,7 +17,7 @@
     <h2 class="section-title">Dashboard</h2>
     <p class="section-description">Add or update information for movies you've uploaded</p>
     <div class="col-md-12" id="add-movie-container">
-      <a href="<?= $BASE_URL ?>/newmovie.php" class="btn w-25 mb-3" id="card-btn">
+      <a href="<?= $BASE_URL ?>/newmovie.php" class="btn mb-3" id="card-btn-sm">
         <i class="fas fa-plus"></i> Add Movie
       </a>
     </div>
