@@ -1,7 +1,7 @@
 <?php 
 
   $db = "mymovie";
-  $host = "localhost";
+  $host = "db"; //localhost
   $user = "root";
   $pass = "";
   
@@ -17,4 +17,3 @@
   }
   
 ?>
-
